@@ -29,14 +29,14 @@ export const fetchPosts = async(url=initialUrl) =>{
       const sum = response.data
       const arrPosts = sum.slice(400,501)
         console.log(arrPosts)
-         arrPosts.map( async(postIndex)=>{
+       const result = await Promise.all( arrPosts.map( async(postIndex)=>{
         console.log(postIndex)
         const res =  await axios.get(
                `https://hacker-news.firebaseio.com/v0/item/${postIndex}.json?print=pretty`);
         return res.data
-      })
-      console.log(arrPosts)
-      return arrPosts;
+      }))
+      console.log(result)
+      return result;
       
         
 }
