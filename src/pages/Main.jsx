@@ -1,19 +1,22 @@
 import React,{useEffect} from 'react';
 import { NewsList } from '../components/NewsList/NewsList';
+import { updateButton } from '../components/updateButton/updateButton';
+import { getPosts } from '../redux/action';
 import { fetchPosts } from '../redux/sagas';
 
 
 export const MainPage = ()=>{
     
-    const url = 'https://hacker-news.firebaseio.com/v0/newstories.json?print=pretty'
+    
     useEffect(()=>{
-        fetchPosts(url);
+        fetchPosts()
         
     },[])
 
 
     return(
         <div>
+            <updateButton className="btn btn-primary" />
             Главная страница
              <NewsList />
         </div>
