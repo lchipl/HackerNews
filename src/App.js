@@ -4,7 +4,6 @@ import { MainPage } from './pages/Main';
 import { NewsPage } from './pages/News';
 
 const  App = () => {
- 
   return (
     <BrowserRouter>
     <Switch>
