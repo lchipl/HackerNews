@@ -5,8 +5,10 @@ export const News = () =>{
     return(
 
         <div style={{border:"1px solid orange"}}>
-            
-            Новость
+            <h3>Заголовок</h3>
+           <p>рейтинг</p>
+           <p>ник автора</p>
+           <p>дата публикации</p>
             <Link to="/news" className="btn btn-primary" >перейти </Link>
             </div>
         
