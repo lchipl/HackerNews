@@ -5,6 +5,7 @@ import { fetchPosts } from '../redux/sagas';
 import {useDispatch,useSelector} from 'react-redux';
 import { getPosts } from '../redux/action';
 import { SET_LOADING } from '../redux/action/types';
+import { Loader } from '../components/spinner/Loader';
 
 
 
@@ -17,9 +18,7 @@ export const MainPage = ()=>{
 
     if(loading){
         return(
-            <div className="spinner-border text-danger" role="status">
-                <span className="sr-only">Loading...</span>
-            </div>
+            <Loader />
         )
     }
     return(
