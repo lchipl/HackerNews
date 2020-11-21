@@ -9,9 +9,9 @@ export const NewsList = () =>{
 
 
     return(
-        posts.map((el)=>{
-            const {id} = el;
-            return <li key={id}><News elem={el}/></li>
+        posts.map((post)=>{
+            const {id} = post;
+            return <li key={id}><News post={post}/></li>
         })
         
         
