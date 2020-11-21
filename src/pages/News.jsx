@@ -1,6 +1,5 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import {Link} from 'react-router-dom';
 
 export const NewsPage = ()=>{
     const post = useSelector((state)=>state.post);
@@ -11,12 +10,20 @@ export const NewsPage = ()=>{
             url,
             id
             }  =post; 
+
+            //показать что-нибудь такое
+        //     const showWorning = () =>{
+        //         url = '/'
+        //         alert('жаль, но пост больше недоступен, нажмите на Перейти, чтобы вернуться к списку');
+                
+        //     }
+        //    if(url == 'undefined')showWorning():null
     return(
         <article>
             <h2>Название новости</h2>
             <p>Рейтинг</p>
             <p>Автор</p>
-            <a href={`${url}`} className="btn btn-primary">Читать</a>
+            <a href={`${url}`} className="btn btn-primary">Перейти</a>
         </article>
     )
 }
