@@ -15,6 +15,7 @@ export const News = (props) =>{
             <h3>{title}</h3>
            <p>рейтинг: {score}</p>
            <p>ник автора: {by}</p>
+           {/* <p>дата: {new Date(time *1000)}</p> */}
             <Link to={`/news+${id}`}className="btn btn-primary" >перейти </Link>
             </div>
         
