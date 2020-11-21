@@ -1,15 +1,17 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import { News } from '../News/News';
 
 export const NewsList = () =>{
-    const mockItems = new Array(15)
-    .fill(' ')
-    .map((el,index)=>index);
+    
 
-console.log(mockItems)
+    const posts = useSelector(state => state.posts)
+
+
     return(
-        mockItems.map((el,i)=>{
-            return <li key={i}><News/></li>
+        posts.map((el)=>{
+            const {id} = el;
+            return <li key={id}><News elem={el}/></li>
         })
         
         

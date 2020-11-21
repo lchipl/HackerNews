@@ -1,7 +1,7 @@
 import React from 'react';
 
 
-export const updateButton = () =>{
+export const UpdateButton = () =>{
     return(
     <div>
         <button>Обновить</button>

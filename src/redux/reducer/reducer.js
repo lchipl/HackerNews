@@ -1,4 +1,4 @@
-import { GET_POST, GET_POSTS,SET_LOADING,GET_COMMENTS } from "../action/types"
+import { GET_POST, GET_POSTS,SET_LOADING,GET_COMMENTS, HIDE_LOADER } from "../action/types"
 
 
 const initialState ={
@@ -13,6 +13,7 @@ const handlers = {
     [GET_POST]:(state,action) =>({...state, post:action.payload, loading:false}),
     [GET_COMMENTS]:(state,action)=>({...state,  comments:action.payload, loading:false}),
     [SET_LOADING]:(state)=>({...state,  loading:true}),
+    [HIDE_LOADER]:(state) =>({...state,loading:false}),
     DEFAULT:(state) => state
 }
 

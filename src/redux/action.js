@@ -1,7 +1,8 @@
-import { GET_POSTS } from "./action/types"
+import { SET_LOADING } from "./action/types"
 
 export const getPosts = () =>{
+    console.log('вызвал')
     return {
-        type:GET_POSTS
+        type:SET_LOADING
     }
 }

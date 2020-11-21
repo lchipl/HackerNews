@@ -1,10 +1,11 @@
 import {takeEvery, put,call} from 'redux-saga/effects';
-import { GET_POSTS } from './action/types';
+import { GET_POSTS,HIDE_LOADER,SET_LOADING } from './action/types';
 import axios from 'axios'
+import { getPosts } from './action';
 
 
 export function* sagaWatcher(){
-  yield  takeEvery(GET_POSTS,sagaWorker)
+  yield  takeEvery(SET_LOADING,sagaWorker)
 }
 
 
@@ -15,7 +16,7 @@ function* sagaWorker(){
       const payload = yield call(fetchPosts)
       yield put({type:GET_POSTS,payload})
       
-      // скрыть loader
+      yield put({type:HIDE_LOADER})
     }catch(e){
       console.log('ошибОчка', e)
     }
@@ -35,7 +36,8 @@ export const fetchPosts = async(url=initialUrl) =>{
                `https://hacker-news.firebaseio.com/v0/item/${postIndex}.json?print=pretty`);
         return res.data
       }))
-      console.log(result)
+      console.log(result);
+      
       return result;
       
         
