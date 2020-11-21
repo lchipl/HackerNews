@@ -14,13 +14,13 @@ export const News = (props) =>{
             }  =props.elem;             
  return(
 
-        <div style={{border:"1px solid orange"}}>
+        <article style={{border:"1px solid orange",height:'auto',background:'#E4E4DE'}}>
             <h3>{title}</h3>
            <p>рейтинг: {score}</p>
            <p>ник автора: {by}</p>
            {/* <p>дата: {new Date(time *1000)}</p> */}
-            <Link to={`/news/${id}`} onClick={()=>dispatch({type:GET_POST,payload:props.elem})} className="btn btn-primary" >Перейти </Link>
-            </div>
+            <Link to={`/news/${id}`} style={{background:'#FE5D00'}} onClick={()=>dispatch({type:GET_POST,payload:props.elem})} className="btn btn-primary" >Перейти </Link>
+            </article>
         
     )
 }

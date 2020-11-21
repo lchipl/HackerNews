@@ -19,11 +19,11 @@ export const NewsPage = ()=>{
         //     }
         //    if(url == 'undefined')showWorning():null
     return(
-        <article>
+        <div>
             <h2>Название новости</h2>
             <p>Рейтинг</p>
             <p>Автор</p>
             <a href={`${url}`} className="btn btn-primary">Перейти</a>
-        </article>
+        </div>
     )
 }

@@ -3,8 +3,8 @@ import React from 'react';
 
 export const UpdateButton = () =>{
     return(
-    <div>
-        <button>Обновить</button>
+    <div >
+        <button className="btn btn-primary">Обновить</button>
     </div>
         
     )
