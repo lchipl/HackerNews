@@ -1,5 +1,6 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
+import { UpdateComments } from '../components/Buttons/UpdateComments';
 
 export const NewsPage = ()=>{
     const post = useSelector((state)=>state.post);
@@ -20,10 +21,12 @@ export const NewsPage = ()=>{
         //    if(url == 'undefined')showWorning():null
     return(
         <div>
-            <h2>Название новости</h2>
-            <p>Рейтинг</p>
-            <p>Автор</p>
-            <a href={`${url}`} className="btn btn-primary">Перейти</a>
+            <UpdateComments />
+            <h3>{title}</h3>
+            <p>рейтинг: {score}</p>
+            <p>ник автора: {by}</p>
+            <p>Комментариев: </p>
+            <a href={`${url}`} className="btn btn-primary">Перейти к источнику</a>
         </div>
     )
 }

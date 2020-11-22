@@ -1,11 +1,9 @@
 import React,{useEffect} from 'react';
-import { NewsList } from '../components/NewsList/NewsList';
-import { UpdateButton } from '../components/updateButton/updateButton';
-import { fetchPosts } from '../redux/sagas';
+import  NewsList  from '../components/NewsList';
+import  {UpdateButton}  from '../components/Buttons/UpdateButton';
 import {useDispatch,useSelector} from 'react-redux';
-import { getPosts } from '../redux/action';
 import { SET_LOADING } from '../redux/action/types';
-import { Loader } from '../components/spinner/Loader';
+import  Loader from '../components/spinner';
 
 
 

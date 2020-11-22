@@ -18,7 +18,7 @@ export const News = ({post}) =>{
             <h3>{title}</h3>
            <p>рейтинг: {score}</p>
            <p>ник автора: {by}</p>
-           {/* <p>дата: {new Date(time *1000)}</p> */}
+          
             <Link to={`/news/${id}`} style={{background:'#FE5D00'}} onClick={()=>dispatch({type:GET_POST,payload:post})} className="btn btn-primary" >Перейти </Link>
             </article>
         
