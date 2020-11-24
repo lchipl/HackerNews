@@ -1,9 +1,7 @@
 import {takeEvery, put,call} from 'redux-saga/effects';
 import { GET_POSTS,HIDE_LOADER,SET_LOADING } from './action/types';
-import axios from 'axios'
-import { getPosts } from './action';
-
-
+import axios from 'axios';
+import {timestamp} from '../utils/timestamp';
 export function* sagaWatcher(){
   yield  takeEvery(SET_LOADING,sagaWorker)
 }
@@ -23,12 +21,8 @@ function* sagaWorker(){
     
 }
 
-const timestamp = (timeUnix) =>{
-  let dateUnix = new Date(timeUnix*1000);
- let correctTime = 
- `${dateUnix.getDate()}/${(dateUnix.getMonth())}/${dateUnix.getFullYear()} ${dateUnix.getHours()}: ${dateUnix.getMinutes()}`
-  return correctTime;
-}
+
+
 const initialUrl = 'https://hacker-news.firebaseio.com/v0/newstories.json?print=pretty'
 export const fetchPosts = async(url=initialUrl) =>{
     const response = await axios.get(url);
@@ -37,11 +31,11 @@ export const fetchPosts = async(url=initialUrl) =>{
         console.log(arrPosts)
        const result = await Promise.all( arrPosts.map( async(postIndex)=>{
         console.log(postIndex)
-        const value =  await axios.get(
+        const response =  await axios.get(
                `https://hacker-news.firebaseio.com/v0/item/${postIndex}.json?print=pretty`);
-        
-        const res = {...value.data, time:timestamp(value.data.time)}
-        return res
+
+         
+         return  {...response.data,time:timestamp(response.data.time)}
       }))
       console.log(result);
       

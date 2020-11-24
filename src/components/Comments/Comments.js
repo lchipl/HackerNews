@@ -2,9 +2,12 @@ import React from 'react';
 
 
 export const Comments = () =>{
+
+
+
     return(
-        <ul>
-           <li>комментарии</li> 
+        <ul className="main-container">
+           <li>Комментс но ует</li> 
         </ul>
     )
 }

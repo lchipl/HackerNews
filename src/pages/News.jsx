@@ -1,6 +1,7 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { UpdateComments } from '../components/Buttons/UpdateComments';
+import { Comments } from '../components/Comments/Comments';
 
 export const NewsPage = ()=>{
     const post = useSelector((state)=>state.post);
@@ -31,6 +32,7 @@ export const NewsPage = ()=>{
             <p>Время {(time)}</p>
             <p>Комментариев: </p>
             <a href={`${url}`} className="btn btn-primary">Перейти к источнику</a>
+            <Comments />
         </div>
     )
 }
