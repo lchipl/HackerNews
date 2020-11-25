@@ -2,15 +2,16 @@ import {takeEvery, put,call} from 'redux-saga/effects';
 import { GET_POSTS,HIDE_LOADER,SET_LOADING } from './action/types';
 import axios from 'axios';
 import {timestamp} from '../utils/timestamp';
+
 export function* sagaWatcher(){
-  yield  takeEvery(SET_LOADING,sagaWorker)
+  yield  takeEvery(GET_POSTS,sagaWorker)
 }
 
 
 function* sagaWorker(){
     
     try{
-      //yield put() // показать loader 
+      yield put({type:SET_LOADING}) // показать loader 
       const payload = yield call(fetchPosts)
       yield put({type:GET_POSTS,payload})
       

@@ -2,8 +2,8 @@ import React,{useEffect} from 'react';
 import  NewsList  from '../components/NewsList';
 import  {UpdateButton}  from '../components/Buttons/UpdateButton';
 import {useDispatch,useSelector} from 'react-redux';
-import { SET_LOADING } from '../redux/action/types';
 import  Loader from '../components/spinner';
+import { GET_POSTS } from '../redux/action/types';
 
 
 
@@ -11,7 +11,7 @@ export const MainPage = ()=>{
     const dispatch = useDispatch()
     const loading = useSelector(state => state.loading)
     useEffect(()=>{
-        dispatch({type:SET_LOADING})
+        dispatch({type:GET_POSTS})
     },[])
 
     if(loading){

@@ -6,8 +6,10 @@ export const Comments = () =>{
 
 
     return(
-        <ul className="main-container">
+        <div className="main-container">
+        <ul >
            <li>Комментс но ует</li> 
         </ul>
+        </div>
     )
 }
