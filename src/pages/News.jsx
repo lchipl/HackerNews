@@ -1,17 +1,24 @@
-import React from 'react';
-import { useSelector } from 'react-redux';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { UpdateComments } from '../components/Buttons/UpdateComments';
 import { Comments } from '../components/Comments/Comments';
+import { GET_COMMENTS } from '../redux/action/types';
 
 export const NewsPage = ()=>{
-    const post = useSelector((state)=>state.post);
     const  {by,
-            time,
-            title,
-            score,
-            url,
-            id
-            }  =post; 
+        time,
+        title,
+        score,
+        url,
+        id,
+        kids
+        }  =post; 
+    // const dispatch = useDispatch()
+    // useEffect(()=>{
+    //     dispatch({type:GET_COMMENTS,kids})
+    // },[])
+    const post = useSelector((state)=>state.post);
+   
 
             //показать что-нибудь такое
         //     const showWorning = () =>{

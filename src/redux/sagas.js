@@ -1,14 +1,15 @@
-import {takeEvery, put,call} from 'redux-saga/effects';
-import { GET_POSTS,HIDE_LOADER,SET_LOADING } from './action/types';
+import {takeEvery, put,call,all} from 'redux-saga/effects';
+import { GET_COMMENTS, GET_POSTS,HIDE_LOADER,SET_LOADING } from './action/types';
 import axios from 'axios';
 import {timestamp} from '../utils/timestamp';
 
-export function* sagaWatcher(){
-  yield  takeEvery(GET_POSTS,sagaWorker)
+ function* sagaFetchPosts(){
+  yield  takeEvery(GET_POSTS,sagaWorkerPosts)
 }
 
 
-function* sagaWorker(){
+
+function* sagaWorkerPosts(){
     
     try{
       yield put({type:SET_LOADING}) // показать loader 
@@ -24,8 +25,16 @@ function* sagaWorker(){
 
 
 
+
+
+export default function* rootSaga() {
+  yield all([
+    sagaFetchPosts()
+  ])
+};
+
 const initialUrl = 'https://hacker-news.firebaseio.com/v0/newstories.json?print=pretty'
-export const fetchPosts = async(url=initialUrl) =>{
+ const fetchPosts = async(url=initialUrl) =>{
     const response = await axios.get(url);
       const sum = response.data
       const arrPosts = sum.slice(400,501)
@@ -44,6 +53,7 @@ export const fetchPosts = async(url=initialUrl) =>{
       
         
 }
+
 
   
   
