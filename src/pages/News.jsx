@@ -2,9 +2,10 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { UpdateComments } from '../components/Buttons/UpdateComments';
 import { Comments } from '../components/Comments/Comments';
-import { GET_COMMENTS } from '../redux/action/types';
+import { FETCH_COMMENTS } from '../redux/action/types';
 
 export const NewsPage = ()=>{
+    const post = useSelector((state)=>state.post);
     const  {by,
         time,
         title,
@@ -13,11 +14,11 @@ export const NewsPage = ()=>{
         id,
         kids
         }  =post; 
-    // const dispatch = useDispatch()
-    // useEffect(()=>{
-    //     dispatch({type:GET_COMMENTS,kids})
-    // },[])
-    const post = useSelector((state)=>state.post);
+    const dispatch = useDispatch()
+    useEffect(()=>{
+        dispatch({type:FETCH_COMMENTS,kids})
+    },[])
+    
    
 
             //показать что-нибудь такое

@@ -1,10 +1,10 @@
 import {takeEvery, put,call,all} from 'redux-saga/effects';
-import { GET_COMMENTS, GET_POSTS,HIDE_LOADER,SET_LOADING } from './action/types';
+import { FETCH_POSTS, GET_COMMENTS, GET_POSTS,HIDE_LOADER,SET_LOADING } from './action/types';
 import axios from 'axios';
 import {timestamp} from '../utils/timestamp';
 
  function* sagaFetchPosts(){
-  yield  takeEvery(GET_POSTS,sagaWorkerPosts)
+  yield  takeEvery(FETCH_POSTS,sagaWorkerPosts)
 }
 
 
@@ -12,7 +12,7 @@ import {timestamp} from '../utils/timestamp';
 function* sagaWorkerPosts(){
     
     try{
-      yield put({type:SET_LOADING}) // показать loader 
+      yield put({type:SET_LOADING})  // показать loader 
       const payload = yield call(fetchPosts)
       yield put({type:GET_POSTS,payload})
       

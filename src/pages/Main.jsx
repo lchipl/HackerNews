@@ -3,7 +3,7 @@ import  NewsList  from '../components/NewsList';
 import  {UpdateButton}  from '../components/Buttons/UpdateButton';
 import {useDispatch,useSelector} from 'react-redux';
 import  Loader from '../components/spinner';
-import { GET_POSTS } from '../redux/action/types';
+import { FETCH_POSTS } from '../redux/action/types';
 
 
 
@@ -11,7 +11,7 @@ export const MainPage = ()=>{
     const dispatch = useDispatch()
     const loading = useSelector(state => state.loading)
     useEffect(()=>{
-        dispatch({type:GET_POSTS})
+        dispatch({type:FETCH_POSTS})
     },[])
 
     if(loading){
