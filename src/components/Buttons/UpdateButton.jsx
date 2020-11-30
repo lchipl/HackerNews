@@ -1,13 +1,7 @@
 import React from 'react';
-import {useDispatch} from 'react-redux';
-import { FETCH_POSTS } from '../../redux/action/types';
 
-export const UpdateButton = () =>{
-    const dispatch =  useDispatch()
-
-    const updatePosts =()=>{
-        dispatch({type:FETCH_POSTS})
-    }
+export const UpdateButton = ({updatePosts}) =>{
+    
 
     return(
     <div >

@@ -38,7 +38,7 @@ export const NewsPage = ()=>{
             <p>рейтинг: {score}</p>
             <p>ник автора: {by}</p>
             <p>Время {(time)}</p>
-            <p>Комментариев: {kids.length}</p>
+            <p>Комментариев:</p>
             <a href={`${url}`} className="btn btn-primary">Перейти к источнику</a>
             <Comments comments={kids}/>
         </div>
