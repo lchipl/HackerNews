@@ -3,10 +3,10 @@ import { useSelector } from 'react-redux';
 import  News from '../News';
 import './styles.css'
 
-export const NewsList = () =>{
+export const NewsList = ({posts}) =>{
     
 
-    const posts = useSelector(state => state.posts)
+    
 
 
     return(

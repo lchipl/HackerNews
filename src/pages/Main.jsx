@@ -9,11 +9,13 @@ import { FETCH_POSTS } from '../redux/action/types';
 
 export const MainPage = ()=>{
     const dispatch = useDispatch()
-    const loading = useSelector(state => state.loading)
+    const state = useSelector(state => state);
+   
     useEffect(()=>{
         dispatch({type:FETCH_POSTS})
     },[])
-
+    const loading = state.loading;
+    const posts = state.posts
     if(loading){
         return(
             <Loader />
@@ -23,7 +25,7 @@ export const MainPage = ()=>{
         <div>
             <UpdateButton  className="btn btn-primary" />
             Главная страница
-             <NewsList />
+             <NewsList posts={posts}/>
         </div>
     )
 }
