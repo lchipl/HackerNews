@@ -1,8 +1,7 @@
-import {put,call,all, takeLatest} from 'redux-saga/effects';
+import {put,call,all, takeLatest, select} from 'redux-saga/effects';
 import { FETCH_COMMENTS, FETCH_POSTS, GET_COMMENTS, GET_POSTS,HIDE_LOADER,SET_LOADING } from './action/types';
 import axios from 'axios';
 import {timestamp} from '../utils/timestamp';
-
  function* sagaFetchPosts(){
   yield takeLatest(FETCH_POSTS,sagaWorkerPosts)
 }
@@ -30,7 +29,7 @@ function* sagaFetchComments(){
 function* sagaWorkerComments(){
   try{
     yield put({type:SET_LOADING})  // показать loader 
-    const payload = yield call(fetchComments)
+   const payload = yield call(fetchComments)
     yield put({type:GET_COMMENTS,payload})
     
     yield put({type:HIDE_LOADER})
@@ -67,8 +66,18 @@ const initialUrl = 'https://hacker-news.firebaseio.com/v0/newstories.json?print=
         
 }
 
+const {kids} = select((state)=>state.post)
+
 const fetchComments = async()=>{
-  console.log('done')
+  let response;
+  if(kids){
+   response = await axios.get(`https://hacker-news.firebaseio.com/v0/item/${kids[0]}.json?print=pretty`);
+  }else{
+    console.log('коммент но пока пусто',)
+    return 'комментариев пока нет'
+  }
+  console.log('коммент',response.data)
+return await response.data
 }
   
         
