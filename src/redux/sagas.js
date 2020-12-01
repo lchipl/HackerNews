@@ -1,10 +1,10 @@
-import {takeEvery, put,call,all} from 'redux-saga/effects';
-import { FETCH_POSTS, GET_COMMENTS, GET_POSTS,HIDE_LOADER,SET_LOADING } from './action/types';
+import {put,call,all, takeLatest} from 'redux-saga/effects';
+import { FETCH_COMMENTS, FETCH_POSTS, GET_COMMENTS, GET_POSTS,HIDE_LOADER,SET_LOADING } from './action/types';
 import axios from 'axios';
 import {timestamp} from '../utils/timestamp';
 
  function* sagaFetchPosts(){
-  yield  takeEvery(FETCH_POSTS,sagaWorkerPosts)
+  yield takeLatest(FETCH_POSTS,sagaWorkerPosts)
 }
 
 
@@ -23,13 +23,26 @@ function* sagaWorkerPosts(){
     
 }
 
+function* sagaFetchComments(){
+  yield takeLatest(FETCH_COMMENTS,sagaWorkerComments)
+}
 
-
-
+function* sagaWorkerComments(){
+  try{
+    yield put({type:SET_LOADING})  // показать loader 
+    const payload = yield call(fetchPosts)
+    yield put({type:GET_COMMENTS,payload})
+    
+    yield put({type:HIDE_LOADER})
+  }catch(e){
+    console.log('ошибОчка', e)
+  }
+}
 
 export default function* rootSaga() {
   yield all([
-    sagaFetchPosts()
+    sagaFetchPosts(),
+    sagaFetchComments()
   ])
 };
 
