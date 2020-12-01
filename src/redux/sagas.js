@@ -30,7 +30,7 @@ function* sagaFetchComments(){
 function* sagaWorkerComments(){
   try{
     yield put({type:SET_LOADING})  // показать loader 
-    const payload = yield call(fetchPosts)
+    const payload = yield call(fetchComments)
     yield put({type:GET_COMMENTS,payload})
     
     yield put({type:HIDE_LOADER})
@@ -67,8 +67,9 @@ const initialUrl = 'https://hacker-news.firebaseio.com/v0/newstories.json?print=
         
 }
 
-
-  
+const fetchComments = async()=>{
+  console.log('done')
+}
   
         
         
