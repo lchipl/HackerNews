@@ -12,7 +12,8 @@ export const NewsItem = ({post}) =>{
                 time,
                 title,
                 score,
-                id
+                id,
+                kids
             }  =post; 
                         
  return(
@@ -22,6 +23,7 @@ export const NewsItem = ({post}) =>{
            <p>рейтинг: {score}</p>
            <p>ник автора: {by}</p>
            <p>Опубликовано: {time}</p>
+           <p>Комментариев: {kids?kids.length:0}</p>
            <Link to={`/news/${id}`}  onClick={()=>dispatch({type:GET_POST,payload:post})} >
            <Button variant="contained" color="primary">
                

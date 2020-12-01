@@ -8,7 +8,9 @@ import { FETCH_COMMENTS } from '../redux/action/types';
 import Button from '@material-ui/core/Button';
 
 export const NewsPage = ()=>{
-    const post = useSelector((state)=>state.post);
+    
+   
+    const state = useSelector((state)=>state);
     const  {by,
         time,
         title,
@@ -16,15 +18,18 @@ export const NewsPage = ()=>{
         url,
         id,
         kids
-        }  =post; 
+        }  =state.post; 
+
+
+   
+    
+    const {comments} =state;
+    console.log('это они', comments)
     const dispatch = useDispatch()
     useEffect(()=>{
     
         dispatch({type:FETCH_COMMENTS,kids})
     },[])
-    
-   
-
             //показать что-нибудь такое
         //     const showWorning = () =>{
         //         url = '/'
@@ -48,7 +53,7 @@ export const NewsPage = ()=>{
                 color="primary" >
             Перейти к источнику
             </Button></a>
-            <Comments />
+            <Comments items={comments} />
         </div>
     )
 }
