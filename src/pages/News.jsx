@@ -4,6 +4,9 @@ import { UpdateComments } from '../components/Buttons/UpdateComments';
 import { Comments } from '../components/Comments/Comments';
 import { FETCH_COMMENTS } from '../redux/action/types';
 
+
+import Button from '@material-ui/core/Button';
+
 export const NewsPage = ()=>{
     const post = useSelector((state)=>state.post);
     const  {by,
@@ -16,6 +19,7 @@ export const NewsPage = ()=>{
         }  =post; 
     const dispatch = useDispatch()
     useEffect(()=>{
+    
         dispatch({type:FETCH_COMMENTS,kids})
     },[])
     
@@ -39,8 +43,12 @@ export const NewsPage = ()=>{
             <p>ник автора: {by}</p>
             <p>Время {(time)}</p>
             <p>Комментариев: {kids?kids.length:0}</p>
-            <a href={`${url}`} className="btn btn-primary">Перейти к источнику</a>
-            <Comments comments={kids}/>
+            <a href={`${url}`} >
+            <Button variant="contained" 
+                color="primary" >
+            Перейти к источнику
+            </Button></a>
+            <Comments />
         </div>
     )
 }

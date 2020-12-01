@@ -1,15 +1,10 @@
 import React from 'react';
 
+import CircularProgress from '@material-ui/core/CircularProgress';
+import "./styles.css"
 
 export const Loader = () =>{
     return(
-        <div>
-
-        <div style={{width:150, height:150,
-                     marginLeft:'auto',
-                     marginRight: 'auto'}}className="spinner-border text-danger" role="status">
-                
-            </div>
-        </div>
+        <CircularProgress color="secondary" className="spinner" />
     )
 }

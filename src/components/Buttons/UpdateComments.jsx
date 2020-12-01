@@ -1,10 +1,14 @@
 import React from 'react';
 
+import Button from '@material-ui/core/Button';
 
 export const UpdateComments = () =>{
     return(
     <div >
-        <button  className="btn btn-primary">Обновить комментарии</button>
+        <Button variant="contained" 
+                color="primary" >
+                Обновить комментарии
+        </Button>
     </div>
         
     )

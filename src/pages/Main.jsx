@@ -1,4 +1,4 @@
-import React,{useEffect} from 'react';
+import React,{ useMemo} from 'react';
 import  NewsList  from '../components/NewsList';
 import  {UpdateButton}  from '../components/Buttons/UpdateButton';
 import {useDispatch,useSelector} from 'react-redux';
@@ -13,7 +13,7 @@ export const MainPage = ()=>{
     const updatePosts =()=>{
         dispatch({type:FETCH_POSTS})
     }
-    useEffect(()=>{
+    useMemo(()=>{
         dispatch({type:FETCH_POSTS})
     },[])
     const loading = state.loading;

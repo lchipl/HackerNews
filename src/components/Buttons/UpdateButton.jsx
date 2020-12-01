@@ -1,11 +1,16 @@
 import React from 'react';
+import Button from '@material-ui/core/Button';
 
 export const UpdateButton = ({updatePosts}) =>{
     
 
     return(
     <div >
-        <button onClick={updatePosts}  className="btn btn-primary">Обновить</button>
+        <Button variant="contained" 
+                color="primary" 
+                onClick={updatePosts}>
+                    Обновить
+        </Button>
     </div>
         
     )
