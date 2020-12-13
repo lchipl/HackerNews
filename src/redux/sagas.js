@@ -29,11 +29,12 @@ function* sagaFetchComments(){
 
 function* sagaWorkerComments(){
   try{
-    yield put({type:SET_LOADING})  // показать loader 
+    //yield put({type:SET_LOADING})  // показать loader 
     const {kids} = yield select((state)=>state.post)
  
-   const payload = yield call(fetchComments(kids))
+   const payload = yield call(fetchComments,kids)
     console.log('пейлоад',payload)
+    
     yield put({type:GET_COMMENTS,payload})
     
     yield put({type:HIDE_LOADER})

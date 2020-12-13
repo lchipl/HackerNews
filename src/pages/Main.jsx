@@ -10,14 +10,18 @@ import { FETCH_POSTS } from '../redux/action/types';
 export const MainPage = ()=>{
     const dispatch = useDispatch()
     const state = useSelector(state => state);
+    
     const updatePosts =()=>{
         dispatch({type:FETCH_POSTS})
     }
+
     useEffect(()=>{
         dispatch({type:FETCH_POSTS})
     },[])
+
     const loading = state.loading;
     const posts = state.posts
+
     if(loading){
         return(
             <Loader />

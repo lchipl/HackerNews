@@ -26,6 +26,7 @@ export const NewsPage = ()=>{
     const {comments} =state;
     console.log('это они', comments)
     const dispatch = useDispatch()
+
     useEffect(()=>{
     
         dispatch({type:FETCH_COMMENTS,kids})
@@ -37,23 +38,28 @@ export const NewsPage = ()=>{
                 
         //     }
         //    if(url == 'undefined')showWorning():null
-
+    const com =()=>{
+        if(comments){
+            return(<Comments items={comments}/>)
+        }
+    }
        
         console.log('время элемента', time)
     return(
         <div>
             <UpdateComments />
-            <h3>{title}</h3>
-            <p>рейтинг: {score}</p>
-            <p>ник автора: {by}</p>
-            <p>Время {(time)}</p>
-            <p>Комментариев: {kids?kids.length:0}</p>
+                <h3>{title}</h3>
+                <p>рейтинг: {score}</p>
+                <p>ник автора: {by}</p>
+                <p>Время {(time)}</p>
+                <p>Комментариев: {kids?kids.length:0}</p>
             <a href={`${url}`} >
-            <Button variant="contained" 
-                color="primary" >
-            Перейти к источнику
-            </Button></a>
-            <Comments items={comments} />
+                <Button variant="contained" 
+                        color="primary" >
+                    Перейти к источнику
+                </Button>
+            </a>
+            {com}
         </div>
     )
 }

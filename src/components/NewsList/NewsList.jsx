@@ -11,7 +11,9 @@ export const NewsList = ({posts}) =>{
     return(
         posts.map((post)=>{
             const {id} = post;
-            return <li key={id}><NewsItem post={post}/></li>
+            return( <li key={id}>
+                         <NewsItem post={post}/>
+                    </li>)
         })
         
         

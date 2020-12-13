@@ -1,12 +1,12 @@
 import React from 'react';
 
 
-export const  Comment = () =>{
+export const  Comment = ({item}) =>{
     return(
         <div>
         <p>№ </p>
-        <p>Автор</p>
-        <p>Комментарий </p>
+        <p>Автор <strong>{item.by}</strong></p>
+        <p>Комментарий {item.text} </p>
         </div>
     )
 }
