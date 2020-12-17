@@ -7,7 +7,7 @@ import { FETCH_COMMENTS } from '../redux/action/types';
 
 import Button from '@material-ui/core/Button';
 
-export const NewsPage = ()=>{
+export const NewsPage = () =>{
     
    
     const state = useSelector((state)=>state);
@@ -38,7 +38,7 @@ export const NewsPage = ()=>{
                 
         //     }
         //    if(url == 'undefined')showWorning():null
-    const com =()=>{
+    const com = () =>{
         if(comments){
             return(<Comments items={comments}/>)
         }
