@@ -1,7 +1,9 @@
-
-
-.article{
-border:"1px solid orange";
-height:'auto';
-background:'#E4E4DE';
+.article {
+  border: "1px solid orange";
+  height: "auto";
+  background: "#E4E4DE";
+}
+p,
+h3 {
+  margin: 3px;
 }

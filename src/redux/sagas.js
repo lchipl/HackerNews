@@ -50,7 +50,7 @@ export default function* rootSaga() {
 }
 
 const initialUrl =
-  'https://hacker-news.firebaseio.com/v0/newstories.json?print=pretty&orderBy="$key"&limitToFirst=100';
+  'https://hacker-news.firebaseio.com/v0/newstories.json?print=pretty&orderBy="$key"&limitToFirst=5';
 const fetchPosts = async (url = initialUrl) => {
   const response = await axios.get(url);
   const arrPosts = response.data;

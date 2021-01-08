@@ -4,6 +4,7 @@ import {UpdateButton}  from '../components/Buttons/UpdateButton';
 import {useDispatch,useSelector} from 'react-redux';
 import Loader from '../components/spinner';
 import { FETCH_POSTS } from '../redux/action/types';
+import PaginationRounded from '../components/Pagination/pagination';
 
 
 
@@ -34,7 +35,9 @@ export const MainPage = () =>{
             <UpdateButton  updatePosts={updatePosts} className="btn btn-primary" />
              <div className="newsWrapper">
              <NewsList  posts={posts}/>
+             <PaginationRounded />
              </div>
+             
         </div>
     )
 }
