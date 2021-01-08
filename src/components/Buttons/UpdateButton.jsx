@@ -6,7 +6,9 @@ export const UpdateButton = ({updatePosts}) =>{
 
     return(
     <div >
-        <Button variant="contained" 
+        <Button 
+                className="updBtn"
+                variant="contained" 
                 color="primary" 
                 onClick={updatePosts}>
                     Обновить

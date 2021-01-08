@@ -30,10 +30,11 @@ export const MainPage = () =>{
         
     }
     return(
-        <div>
+        <div >
             <UpdateButton  updatePosts={updatePosts} className="btn btn-primary" />
-            Главная страница
-             <NewsList posts={posts}/>
+             <div className="newsWrapper">
+             <NewsList  posts={posts}/>
+             </div>
         </div>
     )
 }
