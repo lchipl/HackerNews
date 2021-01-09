@@ -35,7 +35,7 @@ export const MainPage = () =>{
             <UpdateButton  updatePosts={updatePosts} className="btn btn-primary" />
              <div className="newsWrapper">
              <NewsList  posts={posts}/>
-             <PaginationRounded />
+             <PaginationRounded currentPage={state.currentPage}/>
              </div>
              
         </div>
