@@ -7,10 +7,12 @@ import { Provider } from "react-redux";
 import { RootReducer } from "./redux/reducer/reducer";
 import createSagaMiddleware from "redux-saga";
 import sagaWatcher from "./redux/sagas";
+import { composeWithDevTools } from "redux-devtools-extension";
 
 const saga = createSagaMiddleware();
+// prettier-ignore
 
-const store = createStore(RootReducer, compose(applyMiddleware(saga)));
+const store = createStore(RootReducer, composeWithDevTools(applyMiddleware(saga,)));
 
 saga.run(sagaWatcher);
 

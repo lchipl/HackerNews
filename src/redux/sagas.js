@@ -1,5 +1,6 @@
 import { put, call, all, takeLatest, select } from "redux-saga/effects";
 import {
+  CHANGE_PAGE,
   FETCH_COMMENTS,
   FETCH_POSTS,
   GET_COMMENTS,
@@ -13,10 +14,29 @@ function* sagaFetchPosts() {
   yield takeLatest(FETCH_POSTS, sagaWorkerPosts);
 }
 
+function* sagaChangePage() {
+  yield takeLatest(CHANGE_PAGE, sagaWorkerPages);
+}
+
 function* sagaWorkerPosts() {
   try {
     yield put({ type: SET_LOADING }); // показать loader
+
     const payload = yield call(fetchPosts);
+    yield put({ type: GET_POSTS, payload });
+
+    yield put({ type: HIDE_LOADER });
+  } catch (e) {
+    console.log("ошибОчка", e);
+  }
+}
+
+function* sagaWorkerPages() {
+  try {
+    yield put({ type: SET_LOADING }); // показать loader
+    const { currentPage } = yield select((state) => state.currentPage);
+
+    const payload = yield call(fetchPosts, currentPage);
     yield put({ type: GET_POSTS, payload });
 
     yield put({ type: HIDE_LOADER });
@@ -46,23 +66,23 @@ function* sagaWorkerComments() {
 }
 
 export default function* rootSaga() {
-  yield all([sagaFetchPosts(), sagaFetchComments()]);
+  yield all([sagaFetchPosts(), sagaFetchComments(), sagaChangePage()]);
 }
 
 const initialUrl = `https://hacker-news.firebaseio.com/v0/newstories.json?print=pretty&orderBy="$key"&limitToFirst=100`;
-const fetchPosts = async (url = initialUrl) => {
+const fetchPosts = async (currentPage, url = initialUrl) => {
   const response = await axios.get(url);
   let arrPosts = response.data;
-  const sdvig = (pageNumber) => {
-    if (pageNumber === 1) {
+  const sdvig = (currentPage) => {
+    if (currentPage === 1) {
       return (arrPosts.length = 10);
     } else {
       // prettier-ignore
-      return arrPosts = arrPosts.slice((pageNumber-1)*10,(pageNumber*10)+1);
+      return arrPosts = arrPosts.slice((currentPage-1)*10,(currentPage*10)+1);
     }
   };
 
-  sdvig(10);
+  sdvig(currentPage);
 
   const result = await Promise.all(
     arrPosts.map(async (postIndex) => {
