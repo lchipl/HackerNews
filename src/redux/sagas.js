@@ -21,8 +21,9 @@ function* sagaChangePage() {
 function* sagaWorkerPosts() {
   try {
     yield put({ type: SET_LOADING }); // показать loader
-
-    const payload = yield call(fetchPosts);
+    const { currentPage } = yield select((state) => state);
+    console.log("стр которую передаю", currentPage);
+    const payload = yield call(fetchPosts, currentPage);
     yield put({ type: GET_POSTS, payload });
 
     yield put({ type: HIDE_LOADER });
@@ -34,8 +35,8 @@ function* sagaWorkerPosts() {
 function* sagaWorkerPages() {
   try {
     yield put({ type: SET_LOADING }); // показать loader
-    const { currentPage } = yield select((state) => state.currentPage);
-
+    const { currentPage } = yield select((state) => state);
+    console.log("стр которую передаю", currentPage);
     const payload = yield call(fetchPosts, currentPage);
     yield put({ type: GET_POSTS, payload });
 
@@ -75,10 +76,14 @@ const fetchPosts = async (currentPage, url = initialUrl) => {
   let arrPosts = response.data;
   const sdvig = (currentPage) => {
     if (currentPage === 1) {
-      return (arrPosts.length = 10);
+      arrPosts.length = 10;
+      console.log("1page", arrPosts);
+      return arrPosts;
     } else {
       // prettier-ignore
-      return arrPosts = arrPosts.slice((currentPage-1)*10,(currentPage*10)+1);
+      arrPosts = arrPosts.slice((currentPage-1)*10,(currentPage*10)+1);
+      console.log("diffpage", arrPosts);
+      return arrPosts;
     }
   };
 
