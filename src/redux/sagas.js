@@ -8,8 +8,11 @@ import {
   HIDE_LOADER,
   SET_LOADING,
 } from "./action/types";
+
 import axios from "axios";
 import { timestamp } from "../utils/timestamp";
+import { sdvigPagePagination } from "../utils/sdvigPagePag";
+
 function* sagaFetchPosts() {
   yield takeLatest(FETCH_POSTS, sagaWorkerPosts);
 }
@@ -69,26 +72,13 @@ function* sagaWorkerComments() {
 export default function* rootSaga() {
   yield all([sagaFetchPosts(), sagaFetchComments(), sagaChangePage()]);
 }
-
+console.log("secret", process.env.REACT_APP_URLC);
 const initialUrl = `https://hacker-news.firebaseio.com/v0/newstories.json?print=pretty&orderBy="$key"&limitToFirst=100`;
-const fetchPosts = async (currentPage, url = initialUrl) => {
+const fetchPosts = async (currentPage = 1, url = initialUrl) => {
   const response = await axios.get(url);
   let arrPosts = response.data;
-  const sdvig = (currentPage) => {
-    if (currentPage === 1) {
-      arrPosts.length = 10;
-      console.log("1page", arrPosts);
-      return arrPosts;
-    } else {
-      // prettier-ignore
-      arrPosts = arrPosts.slice((currentPage-1)*10,(currentPage*10)+1);
-      console.log("diffpage", arrPosts);
-      return arrPosts;
-    }
-  };
 
-  sdvig(currentPage);
-
+  sdvigPagePagination(currentPage, arrPosts);
   const result = await Promise.all(
     arrPosts.map(async (postIndex) => {
       console.log(postIndex);

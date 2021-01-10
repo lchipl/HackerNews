@@ -11,7 +11,9 @@ export const NewsPage = () =>{
     
    
     const state = useSelector((state)=>state);
-    const  {by,
+    
+    const  {
+        by,
         time,
         title,
         score,
@@ -38,7 +40,7 @@ export const NewsPage = () =>{
                 
         //     }
         //    if(url == 'undefined')showWorning():null
-    const com = () =>{
+    const CommentsList = () =>{
         if(comments){
             return(<Comments items={comments}/>)
         }
@@ -59,7 +61,7 @@ export const NewsPage = () =>{
                     Перейти к источнику
                 </Button>
             </a>
-            {com}
+            {CommentsList}
         </div>
     )
 }

@@ -20,9 +20,10 @@ export default function PaginationRounded({currentPage}) {
   const [page, setPage] = React.useState(1);
   const handleChange = (event, value) => {
     
-      
-    dispatch({type:CHANGE_PAGE,payload:value})
+    setPage(value)
     console.log('актуалка',page)
+    dispatch({type:CHANGE_PAGE,payload:value})
+    
   };
   return (
     <div className={classes.root}>
