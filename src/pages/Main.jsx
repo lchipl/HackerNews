@@ -24,18 +24,25 @@ export const MainPage = () =>{
     },[])
 
     
-
+const IsLoading =()=>{
     if(loading){
         return <Loader />
-            
-        
+        }
+    else{
+       return( 
+    <>
+       <NewsList  posts={posts}/>
+       <PaginationRounded currentPage={state.currentPage}/>
+    </>
+       )
     }
+}
     return(
         <div >
             <UpdateButton  updatePosts={updatePosts} className="btn btn-primary" />
+            
              <div className="newsWrapper">
-             <NewsList  posts={posts}/>
-             <PaginationRounded currentPage={state.currentPage}/>
+             <IsLoading />
              </div>
              
         </div>
