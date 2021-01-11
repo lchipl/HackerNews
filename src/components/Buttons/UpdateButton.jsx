@@ -5,7 +5,9 @@ export const UpdateButton = ({updatePosts}) =>{
     
 
     return(
-    <div >
+    <div style={{margiLeft:"auto",
+                marginRight:"auto",
+    }}>
         <Button 
                 className="updBtn"
                 variant="contained" 

@@ -31,6 +31,7 @@ const IsLoading =()=>{
     else{
        return( 
     <>
+        <UpdateButton  updatePosts={updatePosts} className="btn btn-primary" />
        <NewsList  posts={posts}/>
        <PaginationRounded currentPage={state.currentPage}/>
     </>
@@ -39,9 +40,10 @@ const IsLoading =()=>{
 }
     return(
         <div >
-            <UpdateButton  updatePosts={updatePosts} className="btn btn-primary" />
-            
              <div className="newsWrapper">
+                 
+            
+            
              <IsLoading />
              </div>
              

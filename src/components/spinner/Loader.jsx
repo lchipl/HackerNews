@@ -6,7 +6,7 @@ import CircularProgress from '@material-ui/core/CircularProgress';
 const useStyles = makeStyles((theme) => ({
     spinner: {
       '& > *': {
-        
+        marginTop:"30%"
       },
     },
   }));
